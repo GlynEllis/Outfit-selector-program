@@ -1,0 +1,62 @@
+NOTES:
+-We're storing elements in a list each element is a 3 hour period, so if the user is out in the morning disregard late temperatures.
+-Possibly break down each outfit by garment, so:
+    -Hat: YES: Beanie
+    -Jacket: NO
+    -Jumper: YES: Black Weekday Hoodie
+    -Shirt: ANY: (Covered by Jumper)
+    -Bottoms: SHORTS: Black topman shorts
+    -Socks: YES: Tube Socks
+    -SHOES: YES: Tech sandals
+Have to save the clothing dictionary some way!!!
+
+TASKS:
+BASE FEATURES:
+-Check current weather or 7 day forecast
+-Tell you what to wear out
+
+ADVANCED FEATURES:
+-Keep a list of clothes and add clothes to list 
+-Make the selection more complex so that it will pick based upon style, event and clothing items in the list
+
+
+HATS:
+Is it a beanie or a cap?
+What colour is it?
+Is it formal?
+
+JACKET:
+Is it heavy or light?
+What colour is it?
+Is it formal?
+Is it Waterproof?
+
+TEES:
+What colour is it?
+Does it have a graphic?(maybe means that it is fromal)
+Short or long sleeved
+
+BOTTOMS:
+Shorts or pants
+if pants, are they cargos
+if not then they should be considered for formal but, formal trousers can also be non formal also
+Comfy?
+colour
+suitable for active occasion(walking)??????
+Weather will rule out other things
+If weather is warm, rule out black clothing.
+fit-wide/slim *Not added yet...
+
+SOCKS:
+colour
+*Socks are very dependant on the outfit and do not matter as much, so may only ask colour and then add more features as necessary.
+
+SHOES:
+shoe type-slim/chunky
+formal-yes/no
+comfy-yes/no
+
+
+CHOOSING OUTFIT:
+Create final outfit dictionary, loop through al
+Is there food involved?-Is it a lot of food?-Pick only comfy pants.
