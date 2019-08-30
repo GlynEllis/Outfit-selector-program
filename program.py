@@ -33,7 +33,7 @@ def get_data():
 
 def get_forecast():
     counter = 0
-    print 'CITY:',forecast['city']['name']
+    print 'LOCATION:',forecast['city']['name']
     while counter < 8:#Data is captured every 3 hours, 8 is a day(24hrs).
         
         print '*****************************************************************'
@@ -48,20 +48,24 @@ def get_forecast():
         counter += 1
     
 def get_averages():
+    print 'LOCATION:',forecast['city']['name']
     temp_average = sum(temp)/len(temp)
     print "AVERAGE TEMP:",'%.2f' % temp_average,'DEGREES'#'%' used to display to 'n' numbers after decimal.
 
     windspeed_average = sum(wind_speed)/len(wind_speed)
     print 'AVERAGE WINDSPEED:','%.2f' % windspeed_average,'MPH'
 
-    print 'THE WEATHER DESCRIPTIONS FOR THE DAY:'
+    print 'THE WEATHER DESCRIPTIONS FOR THE NEXT 24 HOURS:'
     for x in range(len(description)):
-        print description[x],
+        print '(',forecast['list'][x]['dt_txt'],')',description[x]
+    print '\n'
+
 
 def add_clothing():
     #Need a menu loop to add different items to a dictionary list thing...
     choice = 0
     while True:
+        print '*****************************************************************'
         print'What item of clothing are you adding?'
         print'1.Hat...'
         print'2.Jacket...'
@@ -72,6 +76,8 @@ def add_clothing():
         print'7.Shoes...'
         print'8.Accessories...'
         print'9.Save and exit...'
+        print '*****************************************************************'
+
         choice = int(raw_input())
         if choice == 1:
             add_hat()
@@ -333,8 +339,10 @@ if __name__ == '__main__':
     print jackets,'\n'
     print jumpers,'\n'''
     while True:
+        print '*****************************************************************'
         print 'Please choose an option:'
-        print '1.Get forecast...','\n','2.Get weather averages...','\n','3.Add clothing item to list...','\n','4.Suggest outfit...','\n','5.Close...'
+        print '1.Get forecast...','\n','2.Get weather averages (24 HRS)...','\n','3.Add clothing item to list...','\n','4.Suggest outfit...','\n','5.Close...'
+        print '*****************************************************************'
         choice = int(raw_input())
         if choice == 1:
             get_forecast()
