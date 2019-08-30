@@ -60,3 +60,4 @@ comfy-yes/no
 CHOOSING OUTFIT:
 Create final outfit dictionary, loop through al
 Is there food involved?-Is it a lot of food?-Pick only comfy pants.
+*PROBLEM* Cannot randomly select a dictionary entry as they are not in an order, will have to access a specific key, but having trouble with that atm.

@@ -269,14 +269,11 @@ def add_shoes():
 
 
        
-
-
-        
-
-
 def suggest_outfit():#Needs an overhaul
     temp_average = sum(temp)/len(temp)
     windspeed_average = sum(wind_speed)/len(wind_speed)
+    hatlength = len(hats)
+
 
     if 'Rain' in description:
         print '\n','It is raining today...'
@@ -289,6 +286,15 @@ def suggest_outfit():#Needs an overhaul
         print '\n','QUITE warm...Consider a tshirt and some trousers...'
     elif temp_average > 20:
         print '\n','VERY warm...Shorts and tshirt are a must...'
+
+    rand = random.randint(0,hatlength)
+    #print hats.items()
+    print 'Hat: '
+    if rand == 0:
+        print 'No hat'
+    else:
+        print random.choice(list(hats))
+    pass
 
     print 'Are you going to be inside/outside?'
     location = (raw_input())
