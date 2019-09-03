@@ -286,21 +286,49 @@ def suggest_outfit():#Needs an overhaul
 
     if temp_average <10:
         print '\n''COLD day today...jacket receommended...'
+        final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+        final_outfit['Jacket'] = random.choice(list(jackets.items()))
+        final_outfit['Jumper'] = random.choice(list(jumpers.items()))
+        final_outfit['Tee'] = random.choice(list(tees.items()))
+        final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+        final_outfit['Shoes'] = random.choice(list(shoes.items()))
+
     elif temp_average >10 and temp_average <15:
         print '\n','MILD day today...Could definetly need a jumper today...'
+        
+        final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+        final_outfit['Jumper'] = random.choice(list(jumpers.items()))
+        final_outfit['Tee'] = random.choice(list(tees.items()))
+        final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+        final_outfit['Shoes'] = random.choice(list(shoes.items()))
+
+    
     elif temp_average >15 and temp_average <20:
         print '\n','QUITE warm...Consider a tshirt and some trousers...'
+        final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+        final_outfit['Tee'] = random.choice(list(tees.items()))
+        final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+        final_outfit['Shoes'] = random.choice(list(shoes.items()))
+
     elif temp_average > 20:
         print '\n','VERY warm...Shorts and tshirt are a must...'
+        final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+        final_outfit['Tee'] = random.choice(list(tees.items()))
+        final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+        final_outfit['Shoes'] = random.choice(list(shoes.items()))
 
-    rand = random.randint(0,hatlength)
-    #print hats.items()
-    print 'Hat: '
-    if rand == 0:
-        print 'No hat'
-    else:
-        print random.choice(list(hats))
-    pass
+    print final_outfit.values()
+
+    #rand = random.randint(0,hatlength)
+    #print 'Hat: '
+    #if rand == 0:
+    #    print 'No hat'
+    #else:
+        #print random.choice(list(hats))
+        #print hats.values()
+    #    hat = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+    #    print hat
+    #    final_outfit['Hat'] = hat
 
     print 'Are you going to be inside/outside?'
     location = (raw_input())
