@@ -317,7 +317,19 @@ def suggest_outfit():#Needs an overhaul
         final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
         final_outfit['Shoes'] = random.choice(list(shoes.items()))
 
-    print final_outfit.values()
+    print 'OUTFIT: '
+    print final_outfit['Hat'][1]['Colour'],final_outfit['Hat'][1]['Name'],final_outfit['Hat'][1]['Type']
+
+    if 'Jacket' in final_outfit:
+        print final_outfit['Jaclet'][1]['Colour'],final_outfit['Jacket'][1]['Name'],final_outfit['Jacket'][1]['Type']
+    if 'Jumper' in final_outfit:
+        print final_outfit['Jumper'][1]['Colour'],final_outfit['Jumper'][1]['Name'],final_outfit['Jumper'][1]['Type']
+
+    print final_outfit['Tee'][1]['Colour'],final_outfit['Tee'][1]['Name'],final_outfit['Tee'][1]['Type']
+    print final_outfit['Bottoms'][1]['Colour'],final_outfit['Bottoms'][1]['Name'],final_outfit['Bottoms'][1]['Type']
+    print final_outfit['Shoes'][1]['Name'],final_outfit['Shoes'][1]['ModelType']
+
+
 
     #rand = random.randint(0,hatlength)
     #print 'Hat: '
@@ -330,7 +342,7 @@ def suggest_outfit():#Needs an overhaul
     #    print hat
     #    final_outfit['Hat'] = hat
 
-    print 'Are you going to be inside/outside?'
+    '''print 'Are you going to be inside/outside?'
     location = (raw_input())
     if location == 'inside':#Inside weather matters less but temp still matters
         print 'is it relaxed or more formal?'
@@ -350,7 +362,7 @@ def suggest_outfit():#Needs an overhaul
             pass
 
         else:
-            pass
+            pass'''
             
     
 
