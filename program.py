@@ -1,6 +1,7 @@
 import json
 import random#Random when outfits have been added.
 import requests
+from collections import Counter#Used to count the weather descriptions in averages.
 
 with open('clothing.txt','r') as incoming_data:
     clothing_informaion = json.load(incoming_data)
@@ -56,9 +57,11 @@ def get_averages():
     print 'AVERAGE WINDSPEED:','%.2f' % windspeed_average,'MPH'
 
     print 'THE WEATHER DESCRIPTIONS FOR THE NEXT 24 HOURS:'
-    for x in range(len(description)):
-        print '(',forecast['list'][x]['dt_txt'],')',description[x]
-    print '\n'
+    print Counter(description).items()
+
+#    for x in range(len(description)):
+#        print '(',forecast['list'][x]['dt_txt'],')',description[x]
+#    print '\n'
 
 
 def add_clothing():
@@ -278,6 +281,7 @@ def add_shoes():
 def suggest_outfit():#Needs an overhaul
     temp_average = sum(temp)/len(temp)
     windspeed_average = sum(wind_speed)/len(wind_speed)
+    keyValList = ['beanie']
 
     '''print 'Are you going to be inside/outside?'
     location = (raw_input())
@@ -303,16 +307,22 @@ def suggest_outfit():#Needs an overhaul
             
     if temp_average <10:
         print '\n''COLD day today...jacket receommended...'
+        
         final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+        while final_outfit['Hat'][1]['Type'] != 'beanie':
+            final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
         final_outfit['Jacket'] = random.choice(list(jackets.items()))
         final_outfit['Jumper'] = random.choice(list(jumpers.items()))
         final_outfit['Tee'] = random.choice(list(tees.items()))
+
         final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+        while final_outfit['Bottoms'][1]['Type'] == 'shorts':
+            final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+    
         final_outfit['Shoes'] = random.choice(list(shoes.items()))
 
     elif temp_average >10 and temp_average <15:
-        print '\n','MILD day today...Could definetly need a jumper today...'
-        
+        print '\n','MILD day today...Could definetly need a jumper today...\n'
         final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
         final_outfit['Jumper'] = random.choice(list(jumpers.items()))
         final_outfit['Tee'] = random.choice(list(tees.items()))
@@ -332,6 +342,9 @@ def suggest_outfit():#Needs an overhaul
         final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
         final_outfit['Tee'] = random.choice(list(tees.items()))
         final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+        while final_outfit['Bottoms'][1]['Type'] == 'shorts':
+            final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+
         final_outfit['Shoes'] = random.choice(list(shoes.items()))
 
     print 'OUTFIT: '

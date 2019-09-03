@@ -71,3 +71,8 @@ Need to implement accessory selection.
 
 When selecting an outfit the main dictionary is seperated into smaller dictionaries, we could 'pop' all irrelevent items when making a decision, so pop all 'Formal:NO' items.
 May also be able to select all items that are formal through specifing dictionary entries?
+
+Looping through nested dictionaries is to be avoided as it is very complex and requires a form of recursion. 
+The way the issue was solved was to while loop through the random selection process until it selected a random entry that I wanted.
+
+*Semi solved most frequent weather conditions but it doesnt print it in a nice manner.*FIX*
