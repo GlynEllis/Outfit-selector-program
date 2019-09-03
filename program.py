@@ -278,12 +278,29 @@ def add_shoes():
 def suggest_outfit():#Needs an overhaul
     temp_average = sum(temp)/len(temp)
     windspeed_average = sum(wind_speed)/len(wind_speed)
-    hatlength = len(hats)
 
+    '''print 'Are you going to be inside/outside?'
+    location = (raw_input())
+    if location == 'inside':#Inside weather matters less but temp still matters
+        print 'is it relaxed or more formal?'
+        situation = (raw_input())
+        if situation == 'relaxed':
+            pass
+            #Loop through hats-pick,jumpers-pick...
+        else:
+            print 'Wow'
+            pass
+            #Loop through only picking formal-True items...
+    
+    elif location == 'outside':
+        print 'Will you be outside for an extended period of time?'
+        response = (raw_input())
+        if response == 'yes':
+            pass
 
-    if 'Rain' in description:
-        print '\n','It is raining today...'
-
+        else:
+            pass'''
+            
     if temp_average <10:
         print '\n''COLD day today...jacket receommended...'
         final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
@@ -329,42 +346,8 @@ def suggest_outfit():#Needs an overhaul
     print final_outfit['Bottoms'][1]['Colour'],final_outfit['Bottoms'][1]['Name'],final_outfit['Bottoms'][1]['Type']
     print final_outfit['Shoes'][1]['Name'],final_outfit['Shoes'][1]['ModelType']
 
-
-
-    #rand = random.randint(0,hatlength)
-    #print 'Hat: '
-    #if rand == 0:
-    #    print 'No hat'
-    #else:
-        #print random.choice(list(hats))
-        #print hats.values()
-    #    hat = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
-    #    print hat
-    #    final_outfit['Hat'] = hat
-
-    '''print 'Are you going to be inside/outside?'
-    location = (raw_input())
-    if location == 'inside':#Inside weather matters less but temp still matters
-        print 'is it relaxed or more formal?'
-        situation = (raw_input())
-        if situation == 'relaxed':
-            pass
-            #Loop through hats-pick,jumpers-pick...
-        else:
-            print 'Wow'
-            pass
-            #Loop through only picking formal-True items...
-    
-    elif location == 'outside':
-        print 'Will you be outside for an extended period of time?'
-        response = (raw_input())
-        if response == 'yes':
-            pass
-
-        else:
-            pass'''
-            
-    
+    if 'Rain' in description:
+        print '\n','It is raining today...so consider an umbrella.'
 
     #Take data from the forecast and suggest an outfit.
 

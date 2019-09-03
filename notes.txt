@@ -64,4 +64,10 @@ Is there food involved?-Is it a lot of food?-Pick only comfy pants.
 
 *Should also check which weather description appears most frequently so that we can only show that during the averages, instead of all the descriptions over the 24 hour period.
 
-The original point was to add all items to a new dictionary named final outfit which 
+Possibly add a fumction that will allow the user to see all itmes of clothing already added.
+If an item exists in the list it should not be allowed to be added again.
+Need to implement a more complex outfit selector(take formality of situation into account, if items match, favourite outfits and so on).
+Need to implement accessory selection.
+
+When selecting an outfit the main dictionary is seperated into smaller dictionaries, we could 'pop' all irrelevent items when making a decision, so pop all 'Formal:NO' items.
+May also be able to select all items that are formal through specifing dictionary entries?
