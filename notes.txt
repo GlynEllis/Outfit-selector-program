@@ -76,3 +76,7 @@ Looping through nested dictionaries is to be avoided as it is very complex and r
 The way the issue was solved was to while loop through the random selection process until it selected a random entry that I wanted.
 
 *Semi solved most frequent weather conditions but it doesnt print it in a nice manner.*FIX*
+
+Formal outfit selection is simple, keep picking until formal is True.
+
+Colour matching: If beanie is yellow, tee should not be certain colours etc... 
