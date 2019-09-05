@@ -193,6 +193,13 @@ def add_tee():
     name = (raw_input())
     tees[item]['Name'] = name
 
+    print 'Is the item a button shirt?'
+    button_shirt = (raw_input())
+    if button_shirt == 'yes':
+        tees[item]['Shirt'] = True
+    else:
+        tees[item]['Shirt'] = False
+
     print 'Is it short/long sleeve?'
     item_type = (raw_input())
     if item_type == 'short':
@@ -290,11 +297,10 @@ def suggest_outfit():#Needs an overhaul
 
     print 'Is the situation formal?...yes/no'
     answer = (raw_input())
-    if answer == 'yes' and temp_average > 15:
+    if answer == 'yes':# and temp_average > 15:
         final_outfit['Tee'] = random.choice(list(tees.items()))
         while final_outfit['Tee'][1]['Formal'] != True:
             final_outfit['Tee'] = random.choice(list(tees.items()))
-
 
         final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
         while final_outfit['Bottoms'][1]['Type'] != 'genericpants':
@@ -307,7 +313,7 @@ def suggest_outfit():#Needs an overhaul
 #Add functionality for cold formal days including jackets and or jumpers, unsure on what a formal jacket should be...
 
     else:    
-        if temp_average <10:
+        if temp_average <5:
             print '\n''COLD day today...jacket receommended...'
         
             final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
@@ -316,7 +322,8 @@ def suggest_outfit():#Needs an overhaul
             final_outfit['Jacket'] = random.choice(list(jackets.items()))
             final_outfit['Jumper'] = random.choice(list(jumpers.items()))
             final_outfit['Tee'] = random.choice(list(tees.items()))
-
+            while final_outfit['Tee'][1]['Shirt'] != False:
+                final_outfit['Tee'] = random.choice(list(tees.items()))
             final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
             while final_outfit['Bottoms'][1]['Type'] == 'shorts':
                 final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
@@ -328,6 +335,8 @@ def suggest_outfit():#Needs an overhaul
             final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
             final_outfit['Jumper'] = random.choice(list(jumpers.items()))
             final_outfit['Tee'] = random.choice(list(tees.items()))
+            while final_outfit['Tee'][1]['Shirt'] != False:
+                final_outfit['Tee'] = random.choice(list(tees.items()))
             final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
             final_outfit['Shoes'] = random.choice(list(shoes.items()))
 
@@ -336,7 +345,10 @@ def suggest_outfit():#Needs an overhaul
             print '\n','QUITE warm...Consider a tshirt and some trousers...'
             final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
             final_outfit['Tee'] = random.choice(list(tees.items()))
-            final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+            if final_outfit['Tee'][1]['Shirt'] == True:
+                final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+                while final_outfit['Bottoms'][1]['Type'] != 'genericpants' or final_outfit['Bottoms'][1]['Type'] != 'shorts':
+                    final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
             final_outfit['Shoes'] = random.choice(list(shoes.items()))
 
         elif temp_average > 20:
@@ -344,7 +356,7 @@ def suggest_outfit():#Needs an overhaul
             final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
             final_outfit['Tee'] = random.choice(list(tees.items()))
             final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
-            while final_outfit['Bottoms'][1]['Type'] == 'shorts':
+            while final_outfit['Bottoms'][1]['Type'] != 'shorts':
                 final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
 
             final_outfit['Shoes'] = random.choice(list(shoes.items()))

@@ -80,3 +80,5 @@ The way the issue was solved was to while loop through the random selection proc
 Formal outfit selection is simple, keep picking until formal is True.
 
 Colour matching: If beanie is yellow, tee should not be certain colours etc... 
+
+Should there be a function for individual selection? so a hat, tee etc... and depending on situatuion you call these functions. 
