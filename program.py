@@ -313,7 +313,7 @@ def suggest_outfit():#Needs an overhaul
 #Add functionality for cold formal days including jackets and or jumpers, unsure on what a formal jacket should be...
 
     else:    
-        if temp_average <5:
+        if temp_average <10:
             print '\n''COLD day today...jacket receommended...'
         
             final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
@@ -361,13 +361,13 @@ def suggest_outfit():#Needs an overhaul
 
             final_outfit['Shoes'] = random.choice(list(shoes.items()))
 
-    print 'OUTFIT: '
-    if 'Hat' in final_outfit:
+    print 'OUTFIT: '#Need to sort printing the outfit/clearing the list after each suggestion.(Possibly pop it.)
+    if 'Hat' in final_outfit and answer != 'yes':
         print final_outfit['Hat'][1]['Colour'],final_outfit['Hat'][1]['Name'],final_outfit['Hat'][1]['Type']
 
     if 'Jacket' in final_outfit:
         print final_outfit['Jaclet'][1]['Colour'],final_outfit['Jacket'][1]['Name'],final_outfit['Jacket'][1]['Type']
-    if 'Jumper' in final_outfit:
+    if 'Jumper' in final_outfit and answer != 'yes'::
         print final_outfit['Jumper'][1]['Colour'],final_outfit['Jumper'][1]['Name'],final_outfit['Jumper'][1]['Type']
 
     print final_outfit['Tee'][1]['Colour'],final_outfit['Tee'][1]['Name'],final_outfit['Tee'][1]['Type']
