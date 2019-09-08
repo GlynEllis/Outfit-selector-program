@@ -347,8 +347,10 @@ def suggest_outfit():#Needs an overhaul
             final_outfit['Tee'] = random.choice(list(tees.items()))
             if final_outfit['Tee'][1]['Shirt'] == True:
                 final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
-                while final_outfit['Bottoms'][1]['Type'] != 'genericpants' or final_outfit['Bottoms'][1]['Type'] != 'shorts':
+                while final_outfit['Bottoms'][1]['Type'] == 'workpants':
                     final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
+            else:
+                final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
             final_outfit['Shoes'] = random.choice(list(shoes.items()))
 
         elif temp_average > 20:
@@ -367,7 +369,7 @@ def suggest_outfit():#Needs an overhaul
 
     if 'Jacket' in final_outfit:
         print final_outfit['Jaclet'][1]['Colour'],final_outfit['Jacket'][1]['Name'],final_outfit['Jacket'][1]['Type']
-    if 'Jumper' in final_outfit and answer != 'yes'::
+    if 'Jumper' in final_outfit and answer != 'yes':
         print final_outfit['Jumper'][1]['Colour'],final_outfit['Jumper'][1]['Name'],final_outfit['Jumper'][1]['Type']
 
     print final_outfit['Tee'][1]['Colour'],final_outfit['Tee'][1]['Name'],final_outfit['Tee'][1]['Type']
@@ -404,6 +406,7 @@ if __name__ == '__main__':
         elif choice == 4:
             suggest_outfit()
         else:
+            quit
             break
 
 #Please answer all questions as is asked, and with lower case unless stated otherwise.
