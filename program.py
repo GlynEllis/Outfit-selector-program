@@ -111,7 +111,7 @@ def add_clothing():
             print '********************************************************'
             print 'TEES:'
             for items in tees:
-                print tees[items]['Name'],tees[items]['Type'],tees[items]['Shirt']
+                print tees[items]['Name'],tees[items]['Type']
             print '********************************************************'
             print 'BOTTOMS:'
             for items in bottoms:
@@ -119,7 +119,7 @@ def add_clothing():
             print '*******************************************************'
             print 'SHOES:'
             for items in shoes:
-                print shoes[items]['Name']
+                print shoes[items]['Name'],shoes[items]['ModelType']
 
         elif choice == 9:
             with open('clothing.txt', 'w') as outfile:  
@@ -392,7 +392,7 @@ def suggest_outfit():#Needs an overhaul
         print final_outfit['Hat'][1]['Colour'],final_outfit['Hat'][1]['Name'],final_outfit['Hat'][1]['Type']
 
     if 'Jacket' in final_outfit:
-        print final_outfit['Jaclet'][1]['Colour'],final_outfit['Jacket'][1]['Name'],final_outfit['Jacket'][1]['Type']
+        print final_outfit['Jacket'][1]['Colour'],final_outfit['Jacket'][1]['Name'],final_outfit['Jacket']
     if 'Jumper' in final_outfit and answer != 'yes':
         print final_outfit['Jumper'][1]['Colour'],final_outfit['Jumper'][1]['Name'],final_outfit['Jumper'][1]['Type']
 
@@ -401,7 +401,11 @@ def suggest_outfit():#Needs an overhaul
     print final_outfit['Shoes'][1]['Name'],final_outfit['Shoes'][1]['ModelType']
 
     if 'Rain' in description:
-        print '\n','It is raining today...so consider an umbrella.'
+        final_outfit['Jacket'] = random.choice(list(jackets.items()))
+        while final_outfit['Jacket'][1]['Waterproof']!= True:
+            final_outfit['Jacket'] = random.choice(list(jackets.items()))
+        print '\n','It is raining today...so consider an umbrella or:'
+        print final_outfit['Jacket'][1]['Name']
 
     #Take data from the forecast and suggest an outfit.
 
