@@ -77,7 +77,7 @@ def add_clothing():
         print'5.Bottoms...'
         print'6.Socks...'
         print'7.Shoes...'
-        print'8.Accessories...'
+        print'8.Show all clothes...'
         print'9.Save and exit...'
         print '*****************************************************************'
 
@@ -96,6 +96,31 @@ def add_clothing():
             add_socks()
         elif choice == 7:
             add_shoes()
+        elif choice == 8:
+            print 'HATS:'
+            for items in hats:
+                print hats[items]['Name'],hats[items]['Type']
+            print '********************************************************'
+            print 'JACKETS:'
+            for items in jackets:
+                print jackets[items]['Name']
+            print '********************************************************'
+            print 'JUMPERS:'
+            for items in jumpers:
+                print jumpers[items]['Name'],jumpers[items]['Type']
+            print '********************************************************'
+            print 'TEES:'
+            for items in tees:
+                print tees[items]['Name'],tees[items]['Type'],tees[items]['Shirt']
+            print '********************************************************'
+            print 'BOTTOMS:'
+            for items in bottoms:
+                print bottoms[items]['Name'],bottoms[items]['Type']
+            print '*******************************************************'
+            print 'SHOES:'
+            for items in shoes:
+                print shoes[items]['Name']
+
         elif choice == 9:
             with open('clothing.txt', 'w') as outfile:  
                 json.dump([hats,jackets,jumpers,tees,bottoms,socks,shoes], outfile)
@@ -126,7 +151,6 @@ def add_hat():
         hats[item]['Formal'] = True
     else:
         hats[item]['Formal'] = False
-    print hats
 
 
 def add_jacket():
@@ -394,7 +418,7 @@ if __name__ == '__main__':
     while True:
         print '*****************************************************************'
         print 'Please choose an option:'
-        print '1.Get forecast...','\n','2.Get weather averages (24 HRS)...','\n','3.Add clothing item to list...','\n','4.Suggest outfit...','\n','5.Close...'
+        print '1.Get forecast...','\n','2.Get weather averages (24 HRS)...','\n','3.Add clothing item to/view list...','\n','4.Suggest outfit...','\n','5.Close...'
         print '*****************************************************************'
         choice = int(raw_input())
         if choice == 1:
