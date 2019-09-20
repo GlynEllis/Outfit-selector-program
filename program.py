@@ -11,7 +11,6 @@ final_outfit = {}
 temp = []
 wind_speed = []
 description = []
-#Need to save the data within the dictionaries and load them again as necessary so that they don't need to be added every time
 hats = clothing_informaion[0]
 jackets = clothing_informaion[1]
 jumpers = clothing_informaion[2]
@@ -23,6 +22,7 @@ shoes = clothing_informaion[6]
 r = requests.get("http://api.openweathermap.org/data/2.5/forecast?q=Stockholm&APPID=76852765b5d0777aa3af09938f379342")
 forecast = r.json()
 
+#Getting the weather data for the forecast.
 def get_data():
     counter = 0
     while counter < 8:#Data is captured every 3 hours, 8 is a day(24hrs).
@@ -31,7 +31,7 @@ def get_data():
         wind_speed.append(forecast['list'][counter]['wind']['speed']*2.3)
         counter += 1
     
-
+#Displaying the 24 hour forecast predictions. 
 def get_forecast():
     counter = 0
     print 'LOCATION:',forecast['city']['name']
@@ -48,24 +48,24 @@ def get_forecast():
 
         counter += 1
     
+#Displaying the averages for the day.
 def get_averages():
     print 'LOCATION:',forecast['city']['name']
     temp_average = sum(temp)/len(temp)
-    print "AVERAGE TEMP:",'%.2f' % temp_average,'DEGREES'#'%' used to display to 'n' numbers after decimal.
+    print "AVERAGE TEMP:",'%.2f' % temp_average,'DEGREES'
 
     windspeed_average = sum(wind_speed)/len(wind_speed)
     print 'AVERAGE WINDSPEED:','%.2f' % windspeed_average,'MPH'
 
     print 'THE WEATHER DESCRIPTIONS FOR THE NEXT 24 HOURS:'
     print Counter(description).items()
-
+    
 #    for x in range(len(description)):
 #        print '(',forecast['list'][x]['dt_txt'],')',description[x]
 #    print '\n'
 
-
+#The menu for adding new clothing items to the dictionary and viewing all stored clothing items.
 def add_clothing():
-    #Need a menu loop to add different items to a dictionary list thing...
     choice = 0
     while True:
         print '*****************************************************************'
@@ -120,13 +120,15 @@ def add_clothing():
             print 'SHOES:'
             for items in shoes:
                 print shoes[items]['Name'],shoes[items]['ModelType']
-
         elif choice == 9:
             with open('clothing.txt', 'w') as outfile:  
                 json.dump([hats,jackets,jumpers,tees,bottoms,socks,shoes], outfile)
             break
-    
+#A copy of the dictionary is made and the clothing items are added to it, once the user has added the clothing the orignal is then overwritten with the new copy. 
+#This is fine small scale but if the data set were large then a different method would be more favourable.
 
+    
+#Items are added after the user selects the garment type and then answers a few basic questions which gives more complexity to each item when it comes to the decision making process. 
 def add_hat():
     item = len(hats)+1
     hats[item] = {}
@@ -273,7 +275,7 @@ def add_bottoms():
     colour = (raw_input())
     bottoms[item]['Colour'] = colour
 
-
+#Socks not implemented as they are too basic for now, can be added later.
 def add_socks():
     item = len(socks)+1
     socks[item] = {}
@@ -314,8 +316,10 @@ def add_shoes():
     else:
         shoes[item]['Formal'] = False
 
-       
-def suggest_outfit():#Needs an overhaul
+#The outfit is selected first by weather and then by the clothing attributes themselves as certain items will not work together, such as a button shirt and cargo pants.
+#Once an item is chosen it is added to the final_outfit dictionary.
+#As dictionaries are not ordered, a random entry is selected and if it fits the criteria for a cohesive outfit it is kept, if not another item is randomly selected.
+def suggest_outfit():
     temp_average = sum(temp)/len(temp)
     windspeed_average = sum(wind_speed)/len(wind_speed)
 
@@ -333,16 +337,13 @@ def suggest_outfit():#Needs an overhaul
         final_outfit['Shoes'] = random.choice(list(shoes.items()))
         while final_outfit['Shoes'][1]['Formal'] != True:
             final_outfit['Shoes'] = random.choice(list(shoes.items()))
-
-#Add functionality for cold formal days including jackets and or jumpers, unsure on what a formal jacket should be...
-
     else:    
         if temp_average <10:
             print '\n''COLD day today...jacket receommended...'
         
-            final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+            final_outfit['Hat'] = random.choice(list(hats.items()))
             while final_outfit['Hat'][1]['Type'] != 'beanie':
-                final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+                final_outfit['Hat'] = random.choice(list(hats.items()))
             final_outfit['Jacket'] = random.choice(list(jackets.items()))
             final_outfit['Jumper'] = random.choice(list(jumpers.items()))
             final_outfit['Tee'] = random.choice(list(tees.items()))
@@ -356,7 +357,7 @@ def suggest_outfit():#Needs an overhaul
 
         elif temp_average >10 and temp_average <15:
             print '\n','MILD day today...Could definetly need a jumper today...\n'
-            final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+            final_outfit['Hat'] = random.choice(list(hats.items()))
             final_outfit['Jumper'] = random.choice(list(jumpers.items()))
             final_outfit['Tee'] = random.choice(list(tees.items()))
             while final_outfit['Tee'][1]['Shirt'] != False:
@@ -367,7 +368,7 @@ def suggest_outfit():#Needs an overhaul
     
         elif temp_average >15 and temp_average <20:
             print '\n','QUITE warm...Consider a tshirt and some trousers...'
-            final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+            final_outfit['Hat'] = random.choice(list(hats.items()))
             final_outfit['Tee'] = random.choice(list(tees.items()))
             if final_outfit['Tee'][1]['Shirt'] == True:
                 final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
@@ -379,7 +380,7 @@ def suggest_outfit():#Needs an overhaul
 
         elif temp_average > 20:
             print '\n','VERY warm...Shorts and tshirt are a must...'
-            final_outfit['Hat'] = random.choice(list(hats.items()))#Randomly selects a dictionary value. Want to add this to the final outfit dict.
+            final_outfit['Hat'] = random.choice(list(hats.items()))
             final_outfit['Tee'] = random.choice(list(tees.items()))
             final_outfit['Bottoms'] = random.choice(list(bottoms.items()))
             while final_outfit['Bottoms'][1]['Type'] != 'shorts':
@@ -400,6 +401,7 @@ def suggest_outfit():#Needs an overhaul
     print final_outfit['Bottoms'][1]['Colour'],final_outfit['Bottoms'][1]['Name'],final_outfit['Bottoms'][1]['Type']
     print final_outfit['Shoes'][1]['Name'],final_outfit['Shoes'][1]['ModelType']
 
+#As a precaution if there is a descriptor of rain at any point in the forecast data over the 24 hour period a waterproof jacket is always suggested as an ad-on.
     if 'Rain' in description:
         final_outfit['Jacket'] = random.choice(list(jackets.items()))
         while final_outfit['Jacket'][1]['Waterproof']!= True:
@@ -407,10 +409,8 @@ def suggest_outfit():#Needs an overhaul
         print '\n','It is raining today...so consider an umbrella or:'
         print final_outfit['Jacket'][1]['Name']
 
-    #Take data from the forecast and suggest an outfit.
 
-
-
+#Main menu to access either the clothing or weather functions of the program.
 if __name__ == '__main__':
     get_data()
     #load clothes file
