@@ -393,7 +393,7 @@ def suggest_outfit():
         print final_outfit['Hat'][1]['Colour'],final_outfit['Hat'][1]['Name'],final_outfit['Hat'][1]['Type']
 
     if 'Jacket' in final_outfit:
-        print final_outfit['Jacket'][1]['Colour'],final_outfit['Jacket'][1]['Name'],final_outfit['Jacket']
+        print final_outfit['Jacket'][1]['Colour'],final_outfit['Jacket'][1]['Name']
     if 'Jumper' in final_outfit and answer != 'yes':
         print final_outfit['Jumper'][1]['Colour'],final_outfit['Jumper'][1]['Name'],final_outfit['Jumper'][1]['Type']
 

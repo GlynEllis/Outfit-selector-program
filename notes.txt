@@ -84,3 +84,5 @@ Colour matching: If beanie is yellow, tee should not be certain colours etc...
 Should there be a function for individual selection? so a hat, tee etc... and depending on situatuion you call these functions. 
 
 *REMOVED accessory function, replaced with ability to view all clothing in list.*
+
+*NOTE* Next time your on, change functionality so that if a coat is formal, cargos cannot be selected.
