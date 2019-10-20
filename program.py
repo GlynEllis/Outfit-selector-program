@@ -119,7 +119,7 @@ def add_clothing():
             print '*******************************************************'
             print 'SHOES:'
             for items in shoes:
-                print shoes[items]['Name'],shoes[items]['ModelType']
+                print shoes[items]['Colour'],shoes[items]['Name'],shoes[items]['ModelType']
         elif choice == 9:
             with open('clothing.txt', 'w') as outfile:  
                 json.dump([hats,jackets,jumpers,tees,bottoms,socks,shoes], outfile)
@@ -315,6 +315,10 @@ def add_shoes():
         shoes[item]['Formal'] = True
     else:
         shoes[item]['Formal'] = False
+    
+    print 'What is the primary colour of the shoe?'
+    colour = (raw_input())
+    shoes[item]['Colour'] = colour
 
 #The outfit is selected first by weather and then by the clothing attributes themselves as certain items will not work together, such as a button shirt and cargo pants.
 #Once an item is chosen it is added to the final_outfit dictionary.
